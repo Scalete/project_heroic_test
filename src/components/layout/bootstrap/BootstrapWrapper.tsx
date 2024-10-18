@@ -4,9 +4,9 @@ import { FC, PropsWithChildren, useEffect } from "react";
 
 const BootstrapWrapper: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
-    typeof document !== "undefined"
-      ? require("bootstrap/dist/js/bootstrap.bundle.min.js")
-      : null;
+    if (typeof document !== "undefined") {
+      import("bootstrap/dist/js/bootstrap.bundle.min.js");
+    }
   }, []);
 
   return children;
